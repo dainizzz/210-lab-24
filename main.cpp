@@ -21,6 +21,7 @@ int main_menu();
 int main() {
 	srand(time(0));
 	bool again;
+	list<Goat> trip;
 
 	// read & populate arrays for names and colors
 	ifstream fin("names.txt");
@@ -35,7 +36,12 @@ int main() {
 	fin1.close();
 
 	int choice = main_menu();
-	list<Goat> trip;
+
+	while (again) {
+		switch (choice) {
+//TODO: Finish this
+		}
+	}
 
 	return 0;
 }
@@ -79,8 +85,12 @@ void delete_goat(list<Goat> &trip) {
 }
 
 void add_goat(list<Goat> &trip, string names[], string colors[]) {
-	// randomly select a name and color from main()'s arrays
-	// select a random age between 0 and max age
+	int nameIndex = rand() % SZ_COLORS;
+	int colorIndex = rand() % SZ_NAMES;
+	int age = rand() % (MAX_AGE + 1);
+
+	Goat newGoat(names[nameIndex], age, colors[colorIndex]);
+	trip.push_back(newGoat);
 }
 
 void display_trip(list<Goat> trip) {
