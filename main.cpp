@@ -22,6 +22,7 @@ int main() {
 	srand(time(0));
 	bool again;
 	list<Goat> trip;
+	int choice;
 
 	// read & populate arrays for names and colors
 	ifstream fin("names.txt");
@@ -35,11 +36,24 @@ int main() {
 	while (fin1 >> colors[i++]);
 	fin1.close();
 
-	int choice = main_menu();
-
+	again = true;
 	while (again) {
+		choice = main_menu();
 		switch (choice) {
-
+			case 1:
+				add_goat(trip, names, colors);
+				break;
+			case 2:
+				delete_goat(trip);
+				break;
+			case 3:
+				display_trip(trip);
+				break;
+			case 4:
+				again = false;
+				break;
+			default:
+				break; // Invalid choices should already be caught in main_menu();
 		}
 	}
 
@@ -96,7 +110,7 @@ void add_goat(list<Goat> &trip, string names[], string colors[]) {
 void display_trip(list<Goat> trip) {
 	int num = 1;
 	for (Goat goat: trip) {
-		cout << '[' << num << "] " << goat.get_name() << " (" << goat.get_age() << ", " << goat.get_color() << ')' <<
+		cout << "\t[" << num << "] " << goat.get_name() << " (" << goat.get_age() << ", " << goat.get_color() << ')' <<
 				endl;
 		num++;
 	}
