@@ -68,6 +68,7 @@ int main_menu() {
 	cout << "[3] List goats" << endl;
 	cout << "[4] Quit" << endl;
 	cout << "Choice --> ";
+	// Checks that the input is the correct type & in the correct range
 	while (!(cin >> choice) || choice < 1 || choice > 4) {
 		cout << "Invalid choice. Please enter a number 1-4 as your choice:" << endl;
 		cin.clear();
@@ -92,17 +93,17 @@ void delete_goat(list<Goat> &trip) {
 	cout << "Which goat do you want to delete?" << endl;
 	int choice = select_goat(trip);
 	auto it = trip.begin();
-	//
-	for (int i = 0; i < choice; i++) {
+	// Starting i at 1 so the iterator matches up correctly with the choice
+	for (int i = 1; i < choice; i++) {
 		++it;
 	}
 	trip.erase(it);
 }
 
 void add_goat(list<Goat> &trip, string names[], string colors[]) {
-	int nameIndex = rand() % SZ_COLORS;
-	int colorIndex = rand() % SZ_NAMES;
-	int age = rand() % (MAX_AGE + 1);
+	int nameIndex = rand() % SZ_NAMES; // the random number is between [0,SZ_NAMES)
+	int age = rand() % (MAX_AGE + 1); // the random number is between [0,MAX_AGE]
+	int colorIndex = rand() % SZ_COLORS; // the random number is between [0,SZ_COLORS)
 
 	Goat newGoat(names[nameIndex], age, colors[colorIndex]);
 	trip.push_back(newGoat);
