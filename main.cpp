@@ -53,10 +53,20 @@ int main_menu() {
 }
 
 int select_goat(list<Goat> trip) {
-
+    int choice;
+    display_trip(trip);
+    cout << "Choice --> ";
+    while (!(cin >> choice) || choice < 1 || choice > trip.size()) {
+        cout << "Invalid choice. Please enter a number 1-" << trip.size() << " as your choice:" << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    return choice;
 }
 
 void delete_goat(list<Goat> &trip) {
+    cout << "Which goat do you want to delete?" << endl;
+    int choice = select_goat(trip);
 }
 
 void add_goat(list<Goat> &trip, string names[], string colors[]) {
