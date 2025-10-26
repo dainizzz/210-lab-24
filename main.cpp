@@ -1,27 +1,30 @@
+// COMSC-210 | Lab 23 | Dainiz Almazan
+// IDE used: CLion
+
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <list>
+#include <set>
 #include <limits>
 #include "Goat.h"
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
-int select_goat(list<Goat> trip);
+int select_goat(set<Goat> trip);
 
-void delete_goat(list<Goat> &trip);
+void delete_goat(set<Goat> &trip);
 
-void add_goat(list<Goat> &trip, string [], string []);
+void add_goat(set<Goat> &trip, string [], string []);
 
-void display_trip(list<Goat> trip);
+void display_trip(set<Goat> trip);
 
 int main_menu();
 
 int main() {
 	srand(time(0));
 	bool again;
-	list<Goat> trip;
+	set<Goat> trip;
 	int choice;
 
 	// read & populate arrays for names and colors
@@ -65,7 +68,7 @@ int main_menu() {
 	cout << "*** GOAT MANAGER 3001 ***" << endl;
 	cout << "[1] Add a goat" << endl;
 	cout << "[2] Delete a goat" << endl;
-	cout << "[3] List goats" << endl;
+	cout << "[3] set goats" << endl;
 	cout << "[4] Quit" << endl;
 	cout << "Choice --> ";
 	// Checks that the input is the correct type & in the correct range
@@ -77,7 +80,7 @@ int main_menu() {
 	return choice;
 }
 
-int select_goat(list<Goat> trip) {
+int select_goat(set<Goat> trip) {
 	int choice;
 	display_trip(trip);
 	cout << "Choice --> ";
@@ -89,7 +92,7 @@ int select_goat(list<Goat> trip) {
 	return choice;
 }
 
-void delete_goat(list<Goat> &trip) {
+void delete_goat(set<Goat> &trip) {
 	cout << "Which goat do you want to delete?" << endl;
 	int choice = select_goat(trip);
 	auto it = trip.begin();
@@ -100,16 +103,16 @@ void delete_goat(list<Goat> &trip) {
 	trip.erase(it);
 }
 
-void add_goat(list<Goat> &trip, string names[], string colors[]) {
+void add_goat(set<Goat> &trip, string names[], string colors[]) {
 	int nameIndex = rand() % SZ_NAMES; // the random number is between [0,SZ_NAMES)
 	int age = rand() % (MAX_AGE + 1); // the random number is between [0,MAX_AGE]
 	int colorIndex = rand() % SZ_COLORS; // the random number is between [0,SZ_COLORS)
 
 	Goat newGoat(names[nameIndex], age, colors[colorIndex]);
-	trip.push_back(newGoat);
+	trip.insert(newGoat);
 }
 
-void display_trip(list<Goat> trip) {
+void display_trip(set<Goat> trip) {
 	int num = 1;
 	for (Goat goat: trip) {
 		cout << "\t[" << num << "] " << goat.get_name() << " (" << goat.get_age() << ", " << goat.get_color() << ')' <<
