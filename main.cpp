@@ -92,6 +92,7 @@ void delete_goat(list<Goat> &trip) {
 	cout << "Which goat do you want to delete?" << endl;
 	int choice = select_goat(trip);
 	auto it = trip.begin();
+	//
 	for (int i = 0; i < choice; i++) {
 		++it;
 	}
