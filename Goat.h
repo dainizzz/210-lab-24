@@ -24,25 +24,18 @@ public:
     void set_color(string c)        { color = c; }
     string get_color() const        { return color; }
 
-    // std::sets are ordered, so this overloaded operator is neccessary so that the compiler knows which
+    // std::sets are ordered, so this overloaded operator is necessary so that the compiler knows which
     // variable to use for sorting.
-    bool operator<(const Goat &other) const {
-        return name < other.get_name();
+    bool operator < (const Goat &other) const {
+        return name < other.name;
     }
 
-    bool operator==(const Goat &other) const {
-        bool equal = true;
-
-        if (name != other.get_name())
-            equal = false;
-
-        if (color != other.get_color())
-            equal = false;
-
-        if (age != other.get_age())
-            equal = false;
-
-        return equal;
+    // Elements in std::sets are unique, so this overloaded operator is necessary so that the compiler knows which
+    // variables need to be the same so that one Goat object is the same as another Goat object
+    bool operator == (const Goat &other) const {
+        if (name == other.name && age == other.age && color == other.color)
+            return true;
+        return false;
     }
 };
 

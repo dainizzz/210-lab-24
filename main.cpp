@@ -39,6 +39,14 @@ int main() {
 	while (fin1 >> colors[i++]);
 	fin1.close();
 
+
+	Goat newGoat("Billy", 8, "White");
+	trip.insert(newGoat);
+	display_trip(trip);
+	Goat sameGoat("Billy", 18, "White");
+	trip.insert(sameGoat);
+	display_trip(trip);
+
 	again = true;
 	while (again) {
 		choice = main_menu();
