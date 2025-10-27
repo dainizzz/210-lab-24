@@ -33,9 +33,7 @@ public:
     // Elements in std::sets are unique, so this overloaded operator is necessary so that the compiler knows which
     // variables need to be the same so that one Goat object is the same as another Goat object
     bool operator==(const Goat &other) const {
-        if (name == other.name && age == other.age && color == other.color)
-            return true;
-        return false;
+        return (name == other.name && age == other.age && color == other.color);
     }
 };
 
