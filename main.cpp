@@ -68,7 +68,7 @@ int main_menu() {
 	cout << "*** GOAT MANAGER 3001 ***" << endl;
 	cout << "[1] Add a goat" << endl;
 	cout << "[2] Delete a goat" << endl;
-	cout << "[3] set goats" << endl;
+	cout << "[3] List goats" << endl;
 	cout << "[4] Quit" << endl;
 	cout << "Choice --> ";
 	// Checks that the input is the correct type & in the correct range

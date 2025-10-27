@@ -24,9 +24,25 @@ public:
     void set_color(string c)        { color = c; }
     string get_color() const        { return color; }
 
-    // write overloaded < operator for the std::list
+    // std::sets are ordered, so this overloaded operator is neccessary so that the compiler knows which
+    // variable to use for sorting.
     bool operator<(const Goat &other) const {
         return name < other.get_name();
+    }
+
+    bool operator==(const Goat &other) const {
+        bool equal = true;
+
+        if (name != other.get_name())
+            equal = false;
+
+        if (color != other.get_color())
+            equal = false;
+
+        if (age != other.get_age())
+            equal = false;
+
+        return equal;
     }
 };
 
