@@ -41,10 +41,16 @@ int main() {
 
 
 	Goat newGoat("Billy", 8, "White");
+	Goat sameAgeGoat("Jilly", 8, "Orange");
+	Goat sameNameGoat("Billy", 18, "Purple");
+	Goat sameColorGoat("Tilly", 2, "White");
 	trip.insert(newGoat);
 	display_trip(trip);
-	Goat sameGoat("Billy", 18, "White");
-	trip.insert(sameGoat);
+	trip.insert(sameAgeGoat);
+	display_trip(trip);
+	trip.insert(sameNameGoat);
+	display_trip(trip);
+	trip.insert(sameColorGoat);
 	display_trip(trip);
 
 	again = true;
